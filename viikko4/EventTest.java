@@ -25,7 +25,17 @@ class Event implements Comparable<Event> {
 
     @Override
     public int compareTo(Event otherEvent) {
-        return this.date.compareTo(otherEvent.date);
+        int dateComparison = this.date.compareTo(otherEvent.date);
+        if (dateComparison != 0) {
+            return dateComparison;
+        }
+
+        int descriptionComparison = this.description.toString().compareTo(otherEvent.description.toString());
+        if (descriptionComparison != 0) {
+            return descriptionComparison;
+        }
+
+        return this.category.toString().compareTo(otherEvent.category.toString());
     }
 
     @Override
